@@ -3,46 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTBank USSD Payment</title>
+    <title>Wave Mobile Money Redirect</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             text-align: center;
-            margin: 50px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            background-color: #f4f4f4;
         }
         .btn {
-            display: block;
-            padding: 15px;
-            background: #ff6600;
+            background-color: #0084ff;
             color: white;
-            text-align: center;
-            text-decoration: none;
+            padding: 15px 25px;
             font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #e65c00;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>GTBank Quick Payment</h2>
-        <p>Click the button below to make a payment using GTBank USSD.</p>
-        <a href="tel:*737*2*99*2032202001590#" class="btn">Pay via GTBank USSD</a>
-    </div>
+    <h2>Send Money via Wave</h2>
+    <p>Click the button below to open Wave with my number pre-filled.</p>
+    <a href="#" class="btn" id="waveRedirect">Open Wave</a>
+
+    <script>
+        document.getElementById("waveRedirect").addEventListener("click", function(event) {
+            event.preventDefault();
+
+            // Construct the Wave app deep link
+            let phoneNumber = "2309804"; // Your Wave phone number
+            let waveDeepLink = `intent://sendmoney?phone=${phoneNumber}#Intent;scheme=wave;package=com.wave.personal;end;`;
+
+            // Try opening the Wave app
+            window.location.href = waveDeepLink;
+        });
+    </script>
 
 </body>
 </html>
